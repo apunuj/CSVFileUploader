@@ -1,0 +1,30 @@
+<h1> Read CSV file </h1>
+
+<div class="dropzone" file-dropzone="fileContent"
+                  file="csvFile" file-name="csvFileName">
+      <span>Drop File Here or </span>
+      <span><input type="file" file-reader="fileContent" /></span>
+</div>
+
+<div ng-if="fileContent" class="content">
+  <table class="table row-border hover">
+    <thead>
+      <tr>
+        <th ng-repeat="field in fileContent[0]">
+          {{field}}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in fileContent.slice(1, fileContent.length)">
+        <td ng-repeat="field in record">
+          {{field}}
+        </td>
+      </tr>
+    <tbody>
+  </table>
+
+  <button ng-click="uploadData()">
+    Upload Data
+  </button>
+</div>
